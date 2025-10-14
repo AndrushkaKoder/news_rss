@@ -41,7 +41,32 @@ final class DataBase extends AbstractDataBase implements DataBaseInterface
 
         $sql->execute($data);
 
-        return $this->connect->lastInsertId();
+        return intval($this->connect->lastInsertId());
+    }
+
+    public function insertMultiple(array $data): void
+    {
+        if (empty($data)) {
+            return;
+        }
+
+        $fields = array_keys($data[0]);
+        $fieldsStr = implode(', ', $fields);
+
+        $placeholders = [];
+        $values = [];
+
+        foreach ($data as $index => $item) {
+            $placeholders[] = '(' . implode(', ', array_fill(0, count($fields), '?')) . ')';
+            $values = array_merge($values, array_values($item));
+        }
+
+        $placeholdersStr = implode(', ', $placeholders);
+
+        $query = "INSERT INTO {$this->table} ({$fieldsStr}) VALUES {$placeholdersStr}";
+
+        $sql = $this->connect->prepare($query);
+        $sql->execute($values);
     }
 
     public function getAll(array $filters = []): ?array
