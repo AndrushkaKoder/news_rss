@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require_once 'vendor/autoload.php';
+
+use App\Kernel\CliRunner\CliRunner;
+use App\Kernel\Exception\CliException;
+
+try {
+    new CliRunner()->run($argv);
+} catch (CliException $e) {
+    echo 'Ошибка при запуске команды: ' . $e->getMessage();
+}

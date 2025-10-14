@@ -8,7 +8,6 @@ class Application
 {
     public function run(string $httpMethod, string $uri): void
     {
-        $router = new Router();
-        $router->dispatch($httpMethod, $uri);
+        new Router()->dispatch($httpMethod, $uri);
     }
 }
