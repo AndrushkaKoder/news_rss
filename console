@@ -5,11 +5,11 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-use App\Kernel\CliRunner\CliRunner;
+use App\Kernel\Cli\Application;
 use App\Kernel\Exception\CliException;
 
 try {
-    new CliRunner()->run($argv);
+    new Application()->run($argv);
 } catch (CliException $e) {
     echo 'Ошибка при запуске команды: ' . $e->getMessage();
 }

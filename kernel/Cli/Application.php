@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Kernel\CliRunner;
+namespace App\Kernel\Cli;
 
 use App\Kernel\Command\CommandInterface;
 use App\Kernel\Exception\CliException;
 
-final readonly class CliRunner
+final readonly class Application
 {
     public function run(array $argv): void
     {

@@ -16,9 +16,9 @@ readonly class Request implements RequestInterface
         return new self($_GET, $_POST);
     }
 
-    public function get(): array
+    public function get(?string $key = null): array|string|null
     {
-        return $this->GET;
+        return !$key ? $this->GET : ($this->GET[$key] ?? null);
     }
 
     public function post(): array

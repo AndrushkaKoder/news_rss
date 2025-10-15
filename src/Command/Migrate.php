@@ -32,7 +32,7 @@ class Migrate extends AbstractCommand implements CommandInterface
                 title VARCHAR(255) NOT NULL,
                 link VARCHAR(255) NOT NULL,
                 image VARCHAR(255) NULL,
-                date TIMESTAMP NOT NULL,
+                date DATE NOT NULL,
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
         ");

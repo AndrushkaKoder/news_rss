@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Kernel\DataBase;
 
 use PDO;
+use PDOStatement;
 
 final class DataBase extends AbstractDataBase implements DataBaseInterface
 {
@@ -80,7 +81,7 @@ final class DataBase extends AbstractDataBase implements DataBaseInterface
         }
 
 
-        $query = "SELECT * FROM {$this->table} WHERE {$where}";
+        $query = "SELECT * FROM {$this->table} " . ($where ? "WHERE {$where}" : "");
 
         $statement = $this->connect->prepare($query);
         $statement->execute();
@@ -99,10 +100,12 @@ final class DataBase extends AbstractDataBase implements DataBaseInterface
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function sql(string $sqlRaw): void
+    public function sql(string $sqlRaw, ?array $params = null): PDOStatement
     {
         $statement = $this->connect->prepare($sqlRaw);
-        $statement->execute();
+        $statement->execute($params);
+
+        return $statement;
     }
 
 }
