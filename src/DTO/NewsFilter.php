@@ -37,4 +37,9 @@ final readonly class NewsFilter
 
         return $arr;
     }
+
+    public function hasFilters(): bool
+    {
+        return !empty($this->toArray());
+    }
 }

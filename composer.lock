@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2d400fb02be72de32f1d0d82b9f31b3",
+    "content-hash": "c07cd63f62c156d400fb03196da6f478",
     "packages": [
         {
             "name": "masterminds/html5",
@@ -542,7 +542,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.4",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-memcached": "*"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

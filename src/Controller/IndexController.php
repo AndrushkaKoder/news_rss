@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\DTO\NewsFilter;
 use App\Kernel\Controller\AbstractController;
 use App\Kernel\Response\Response;
-use App\Service\NewsFeedService;
+use App\Services\NewsFeedService;
 
 class IndexController extends AbstractController
 {
